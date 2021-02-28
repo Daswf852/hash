@@ -27,21 +27,20 @@ int main() {
 ```
 
 ## Functions
- - Md5  
- - Sha0, Sha1  
- - Sha224, Sha256, Sha384, Sha512  
+- Md5  
+- Sha0, Sha1  
+- Sha224, Sha256, Sha384, Sha512  
 ^ not capitalised because these are the class' names i guess
 
 ## To-Do
 
- - Reduce spaghetti
- - Implement other functions
-     - Sha512/t
-     - Sha3
-     - Md2 and Md4 maybe?
-     - BLAKE
-     - Grøstl
-     - Skein
- - Improve performance
- - Use less reinterpret_casts
-    
+- Reduce spaghetti  
+- Implement other functions
+- Sha512/t
+  - Sha3  
+  - Md2 and Md4 maybe?  
+  - BLAKE  
+  - Grøstl  
+  - Skein  
+- Improve performance  
+- Use less reinterpret_casts

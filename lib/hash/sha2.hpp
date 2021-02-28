@@ -124,7 +124,7 @@ class DigestBase256: public LengthPaddedDigest<uint32_t, 64, std::size_t> {
   public:
     virtual ~DigestBase256() override = default;
 
-    DigestBase256(const std::array<uint32_t, 8> &hValues)
+    explicit DigestBase256(const std::array<uint32_t, 8> &hValues)
             : defHValues(hValues)
             , hValues(hValues) {}
 
@@ -139,6 +139,8 @@ class DigestBase256: public LengthPaddedDigest<uint32_t, 64, std::size_t> {
         return ret;
     }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "ArgumentSelectionDefects"
     virtual void ProcessWordChunk(WordChunkType &wChunk) override {
         uint32_t a = hValues[0];
         uint32_t b = hValues[1];
@@ -250,6 +252,7 @@ class DigestBase256: public LengthPaddedDigest<uint32_t, 64, std::size_t> {
         hValues[6] += g;
         hValues[7] += h;
     }
+#pragma clang diagnostic pop
 
   private:
     std::array<uint32_t, 8> defHValues{};
@@ -258,7 +261,7 @@ class DigestBase256: public LengthPaddedDigest<uint32_t, 64, std::size_t> {
 
 class DigestBase512: public LengthPaddedDigest<uint64_t, 128, /*_ExtInt(128)*/ __uint128_t> {
   public:
-    DigestBase512(const std::array<uint64_t, 8> defHValues)
+    explicit DigestBase512(const std::array<uint64_t, 8> defHValues)
             : defHValues(defHValues)
             , hValues(defHValues) {}
 
@@ -275,6 +278,8 @@ class DigestBase512: public LengthPaddedDigest<uint64_t, 128, /*_ExtInt(128)*/ _
         return ret;
     }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "ArgumentSelectionDefects"
     virtual void ProcessWordChunk(WordChunkType &wChunk) override {
         uint64_t a = hValues[0];
         uint64_t b = hValues[1];
@@ -375,6 +380,7 @@ class DigestBase512: public LengthPaddedDigest<uint64_t, 128, /*_ExtInt(128)*/ _
         hValues[6] += g;
         hValues[7] += h;
     }
+#pragma clang diagnostic pop
 
   private:
     std::array<uint64_t, 8> defHValues{};
